@@ -35,7 +35,6 @@
 {% endblock header %}
 
 {% block content %}
-
 {% if page.toc and page.extra.add_toc %}
 ToC
 <ul>
@@ -61,20 +60,25 @@ ToC
 
 {% block footer %}
 <p class="taxonomies">
-{% if page.taxonomies.tags %}
-{% for tag in page.taxonomies.tags %}
-<a href="/tags/{{ tag | slugify }}">#{{ tag }}</a>
-{% endfor %}
-{% if page.taxonomies.categories %}
-{% for category in page.taxonomies.categories %}
-<a href="/categories/{{ category | slugify }}">+{{ category }}</a>
-{% endfor %}
-{% endif %}
-{% if page.taxonomies.contexts %}
-{% for context in page.taxonomies.contexts %}
-<a href="/contexts/{{ context | slugify }}">@{{ context }}</a>
-{% endfor %}
-{% endif %}
-{% endif %}
+    {% if page.taxonomies.tags %}
+    {% for tag in page.taxonomies.tags %}
+    {% set path = tag | slugify %}
+    {% if lang == config.default_language %}
+    <a href="{{ get_url(path='/tags/' ~ path) }}">#{{ tag }}</a>
+    {% else %}
+    <a href="{{ get_url(path=lang ~ '/tags/' ~ path) }}">#{{ tag }}</a>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% if page.taxonomies.categories %}
+    {% for category in page.taxonomies.categories %}
+    {% set path = category | slugify %}
+    {% if lang == config.default_language %}
+    <a href="{{ get_url(path='/categories/' ~ path) }}">+{{ category }}</a>
+    {% else %}
+    <a href="{{ get_url(path=lang ~ '/categories/' ~ path) }}">+{{ category }}</a>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
 </p>
 {% endblock footer %}

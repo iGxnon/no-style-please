@@ -15,7 +15,6 @@
 {% endif %}
 
 {% if section.extra.archived %}
-<!-- TODO support group by month... -->
 {% for year, posts in pages | group_by(attribute="year") %}
     <h2>{{ year }}</h2>
     <ul>

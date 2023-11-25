@@ -105,8 +105,13 @@
             <header>
                 {% if config.extra.header_nav %}
                 <nav>
-                    {% for nav_item in config.extra.header_nav %}
-                    <a href="{{ nav_item.url | safe }}" {% if nav_item.new_tab %}target="_blank" rel="noreferrer noopener"{% endif %}>{{ nav_item.name }}</a>
+                    {% for nav_item in config.extra.header_nav | filter(attribute="lang", value=lang)  %}
+                    {% if nav_item.url %}
+                    {% set href = nav_item.url %}
+                    {% elif nav_item.path %}
+                    {% set href = get_url(path=nav_item.path, trailing_slash=false) | safe %}
+                    {% endif %}
+                    <a href="{{ href }}" {% if nav_item.new_tab %}target="_blank" rel="noreferrer noopener"{% endif %}>{{ nav_item.name }}</a>
                     {% endfor %}
                 </nav>
                 {% endif %}
@@ -128,4 +133,3 @@
         </div>
     </body>
 </html>
-        
