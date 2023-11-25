@@ -71,3 +71,14 @@ paginator_hint.last = [
     { lang = "zh", hint = "结尾" },
     { lang = "en", hint = "Last" },
 ]
+
+[extra.giscus]
+enable = false
+data_repo = ""
+data_repo_id = ""
+data_category = "Announcements"
+data_category_id = ""
+data_input_position = "bottom"
+data_theme = "preferred_color_scheme"
+data_loading = "lazy"
+lang_map = [{ lang = "zh", to = "zh-CN" }]

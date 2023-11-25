@@ -88,4 +88,25 @@ ToC
     {% endfor %}
     {% endif %}
 </p>
+
+{% if config.extra.giscus.enable %}
+{% set giscus_lang = config.extra.giscus.lang_map | filter(attribute="lang", value=lang) | map(attribute="to") | first | default(value=lang) %}
+<script src="https://giscus.app/client.js"
+    data-repo="{{ config.extra.giscus.data_repo }}"
+    data-repo-id="{{ config.extra.giscus.data_repo_id }}"
+    data-category="{{ config.extra.giscus.data_category }}"
+    data-category-id="{{ config.extra.giscus.data_category_id }}"
+    data-mapping="og:title"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="{{ config.extra.giscus.data_input_position | default(value='bottom') }}"
+    data-theme="{{ config.extra.giscus.data_theme | default(value='preferred_color_scheme') }}"
+    data-lang="{{ giscus_lang }}"
+    data-loading="{{ config.extra.giscus.data_loading | default(value='lazy') }}"
+    crossorigin="anonymous"
+    async>
+</script>
+{% endif %}
+
 {% endblock footer %}
