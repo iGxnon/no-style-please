@@ -25,3 +25,4 @@ footer_nav = [
     { name = "Twitter", url = "https://www.twitter.com" },
     { name = "Linkedin", url = "https://www.linkedin.com" },
 ]
+recent_pages = { path = "posts", limit = 5 } # equal to `recent_pages = true`
