@@ -55,3 +55,19 @@ taxonomies_map = [
     { lang = "zh", taxonomy = "tags", name = "标签" },
     { lang = "zh", taxonomy = "categories", name = "分类" },
 ]
+paginator_hint.first = [
+    { lang = "zh", hint = "开头" },
+    { lang = "en", hint = "First" },
+]
+paginator_hint.previous = [
+    { lang = "zh", hint = "前一页" },
+    { lang = "en", hint = "Pervious" },
+]
+paginator_hint.next = [
+    { lang = "zh", hint = "下一页" },
+    { lang = "en", hint = "Next" },
+]
+paginator_hint.last = [
+    { lang = "zh", hint = "结尾" },
+    { lang = "en", hint = "Last" },
+]
