@@ -47,7 +47,7 @@
         {% endif %}
 
         {% if title %}<title>{{ title }}</title>{% endif %}
-        {% block metatags %}
+        {% block meta %}
         {% if title %}<meta name="title" content="{{ title }}">{% endif %}
         {% if author %}<meta name="author" content="{{ author }}">{% endif %}
         {% if description %}<meta name="description" content="{{ description }}">{% endif %}
@@ -85,15 +85,20 @@
                 "@context":"https://schema.org"
             }
         </script>
-        {% endblock metatags %}
+        {% endblock meta %}
+
         {% if config.generate_feed %}
         {% block feed %}
-        <link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path="atom.xml", trailing_slash=false) }}">
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path='atom.xml', trailing_slash=false) }}">
         {% endblock feed %}
         {% endif %}
+
         {% block css %}
         <link rel="stylesheet" href="{{ get_url(path='style.css', trailing_slash=false) | safe }}"/>
         {% endblock css %}
+
+        {% block head %}
+        {% endblock head %}
     </head>
     <body theme="auto">
         <div class="w">
