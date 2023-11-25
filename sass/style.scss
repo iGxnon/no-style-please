@@ -6,7 +6,12 @@
 
     &.invertable { filter: invert(0); }
   }
-  .reversible {
+  iframe {
+    filter: invert(1);
+
+    &.invertable { filter: invert(0); }
+  }
+  .emoji {
     filter: invert(1);
   }
 }
