@@ -5,11 +5,7 @@ description = "A (nearly) no-CSS, fast, minimalist Zola theme."
 compile_sass = true
 generate_feed = true
 
-taxonomies = [
-    { name = "tags" },
-    { name = "categories" },
-    { name = "contexts" },
-]
+taxonomies = [{ name = "tags" }, { name = "categories" }]
 
 [markdown]
 highlight_code = true
@@ -18,12 +14,13 @@ highlight_code = true
 author = "Ahmed Alaa"
 logo = "images/logo.png"
 header_nav = [
-    { name = "~home", url = "/" },
-    { name = "#tags", url = "/tags" },
-    { name = "+categories", url = "/categories" },
+    { name = "home", url = "/" },
+    { name = "tags", url = "/tags" },
+    { name = "categories", url = "/categories" },
+    { name = "about", url = "/about" },
 ]
 footer_nav = [
-    { name = "< previous", url = "#" },
-    { name = "webring", url = "#" },
-    { name = "next >", url = "#" },
+    { name = "Github", url = "https://www.github.com" },
+    { name = "Twitter", url = "https://www.twitter.com" },
+    { name = "Linkedin", url = "https://www.linkedin.com" },
 ]
