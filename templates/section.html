@@ -13,15 +13,33 @@
 {% else %}
 {% set pages = section.pages %}
 {% endif %}
-<ul>
-{% for page in pages %}
-    <li>
-        <a href="{{ page.permalink | safe }}">{{ page.date }} - {{ page.title }}</a>
-        <br />
-        {{ page.description }}
-    </li>
+
+{% if section.extra.archived %}
+<!-- TODO support group by month... -->
+{% for year, posts in pages | group_by(attribute="year") %}
+    <h2>{{ year }}</h2>
+    <ul>
+        {% for page in posts %}
+            <li>
+                <a href="{{ page.permalink | safe }}">{{ page.date }} - {{ page.title }}</a>
+                <br />
+                {{ page.description }}
+            </li>
+        {% endfor %}
+    </ul>
 {% endfor %}
+{% else %}
+<ul>
+    {% for page in pages %}
+        <li>
+            <a href="{{ page.permalink | safe }}">{{ page.date }} - {{ page.title }}</a>
+            <br />
+            {{ page.description }}
+        </li>
+    {% endfor %}
 </ul>
+{% endif %}
+
 {% if paginator %}
 <p>{% if paginator.previous %}<a href="{{ paginator.first }}">&lt;&lt; First</a> <a href="{{ paginator.previous }}">&lt; Previous</a>{% endif %} [{{ paginator.current_index }}/{{ paginator.number_pagers }}] {% if paginator.next %}<a href="{{ paginator.next }}">Next &gt;</a> <a href="{{ paginator.last }}">Last &gt;&gt;</a>{% endif %}</p>
 {% endif %}
