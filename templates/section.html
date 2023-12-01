@@ -19,7 +19,7 @@
     <ul>
         {% for page in posts -%}
             <li>
-                <a href="{{ page.permalink | safe }}">{{ page.date }} - {{ page.title }}</a>
+                <a href="{{ page.permalink | safe }}">{% if not section.extra.hide_date %}{{ page.date }} - {% endif %}{{ page.title }}</a>
                 <br />
                 {{ macros::emoji_safe(txt=page.description) }}
             </li>
@@ -30,7 +30,7 @@
 <ul>
     {% for page in pages -%}
         <li>
-            <a href="{{ page.permalink | safe }}">{{ page.date }} - {{ page.title }}</a>
+            <a href="{{ page.permalink | safe }}">{% if not section.extra.hide_date %}{{ page.date }} - {% endif %}{{ page.title }}</a>
             <br />
             {{ macros::emoji_safe(txt=page.description) }}
         </li>
