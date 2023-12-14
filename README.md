@@ -10,6 +10,7 @@ I have done these:
 - Replace list_pages with recent_pages (list_page will display 'about pages' and some other pages located in the 'content' directory, which is unexpected.)
 - Support [Katex](https://katex.org/)
 - Support [Music ABC notation](https://abcnotation.com/)
+- Support Multilingual sites
 
 
 ## License
