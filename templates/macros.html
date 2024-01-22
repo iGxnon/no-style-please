@@ -1,18 +1,3 @@
-{# TODO: This macros is too slow, wait to be refactored when zola release https://github.com/getzola/zola/pull/2163 -#}
 {% macro emoji_safe(txt) -%}
-    {% set txt = txt | default(value='') -%}
-    {% if txt is matching('[\p{Emoji}--\p{Ascii}]') -%}
-        {% set raw_words = txt | split(pat='') -%}
-        {% set_global words = [] -%}
-        {% for word in raw_words -%}
-        {% if word is matching('^[\p{Emoji}--\p{Ascii}]$') -%}
-            {% set_global words = words | concat(with='<span class="emoji">' ~ word ~ '</span>') -%}
-        {% else -%}
-            {% set_global words = words | concat(with=word) -%}
-        {% endif -%}
-        {% endfor -%}
-        {{ words | join(seq='') | safe }}
-    {% else -%}
-        {{ txt | safe }}
-    {% endif -%}
+    {{ txt | default(value='') | regex_replace(pattern=`(?P<emoji>[\p{Emoji}--\p{Ascii}])`, rep=`<span class="emoji">$emoji</span>`) | safe }}
 {% endmacro emoji_safe -%}
