@@ -2,7 +2,7 @@
 
 > Online view: [https://no-style-please.netlify.app/](https://no-style-please.netlify.app/)
 
-My fork of `https://github.com/4bcx/no-style-please`
+My fork of [https://github.com/4bcx/no-style-please](https://github.com/atgumx/no-style-please). (If you need to know the basic usage, you can refer to this original repo.)
 
 I have done these:
 
