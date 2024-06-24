@@ -34,9 +34,31 @@
 {% endblock head -%}
 
 {% block header -%}
-<p><a href="..">..</a>/{{ page.slug }}</p>
-<p class="post-meta"><time datetime="{{ page.date }}">{{ page.date }}</time></p>
+<a href="{{ page.path }}.." style="font-size: 32px;">⬑</a>
 <h1>{{ macros::emoji_safe(txt=page.title) }}</h1>
+<p class="post-meta">
+    {% if page.taxonomies.tags -%}
+    {% for tag in page.taxonomies.tags -%}
+    {% set path = tag | slugify -%}
+    {% if lang == config.default_language -%}
+    <a href="{{ get_url(path='/tags/' ~ path) }}">#{{ tag }}</a>
+    {% else -%}
+    <a href="{{ get_url(path=lang ~ '/tags/' ~ path) }}">#{{ tag }}</a>
+    {% endif -%}
+    {% endfor -%}
+    {% endif -%}
+    {% if page.taxonomies.categories -%}
+    {% for category in page.taxonomies.categories -%}
+    {% set path = category | slugify -%}
+    {% if lang == config.default_language -%}
+    <a href="{{ get_url(path='/categories/' ~ path) }}">+{{ category }}</a>
+    {% else -%}
+    <a href="{{ get_url(path=lang ~ '/categories/' ~ path) }}">+{{ category }}</a>
+    {% endif -%}
+    {% endfor -%}
+    {% endif -%}
+</p>
+<p class="post-meta"><time datetime="{{ page.date }}">{{ page.date }}</time></p>
 {% endblock header -%}
 
 {% block content -%}
@@ -63,28 +85,6 @@ ToC
 {% endblock content -%}
 
 {% block footer -%}
-<p class="taxonomies">
-    {% if page.taxonomies.tags -%}
-    {% for tag in page.taxonomies.tags -%}
-    {% set path = tag | slugify -%}
-    {% if lang == config.default_language -%}
-    <a href="{{ get_url(path='/tags/' ~ path) }}">#{{ tag }}</a>
-    {% else -%}
-    <a href="{{ get_url(path=lang ~ '/tags/' ~ path) }}">#{{ tag }}</a>
-    {% endif -%}
-    {% endfor -%}
-    {% endif -%}
-    {% if page.taxonomies.categories -%}
-    {% for category in page.taxonomies.categories -%}
-    {% set path = category | slugify -%}
-    {% if lang == config.default_language -%}
-    <a href="{{ get_url(path='/categories/' ~ path) }}">+{{ category }}</a>
-    {% else -%}
-    <a href="{{ get_url(path=lang ~ '/categories/' ~ path) }}">+{{ category }}</a>
-    {% endif -%}
-    {% endfor -%}
-    {% endif -%}
-</p>
 {% if config.extra.giscus.enable -%}
 {% set giscus_lang = config.extra.giscus.lang_map | filter(attribute="lang", value=lang) | map(attribute="to") | first | default(value=lang) -%}
 <script src="https://giscus.app/client.js"

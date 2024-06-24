@@ -19,17 +19,8 @@ taxonomies = [{ name = "tags" }, { name = "categories" }]
 author = "Ahmed Alaa"
 logo = "images/logo.png"
 header_nav = [
-    { lang = "en", name = "home", path = "/" },
-    { lang = "zh", name = "主页", path = "/zh" },
-
     { lang = "en", name = "archived", path = "/posts" },
     { lang = "zh", name = "归档", path = "/zh/posts" },
-
-    { lang = "en", name = "tags", path = "/tags" },
-    { lang = "zh", name = "标签", path = "/zh/tags" },
-
-    { lang = "en", name = "categories", path = "/categories" },
-    { lang = "zh", name = "分类", path = "/zh/categories" },
 
     { lang = "en", name = "about", path = "/about" },
     { lang = "zh", name = "关于", path = "/zh/about" },
@@ -37,8 +28,8 @@ header_nav = [
     { lang = "en", name = "discord", url = "https://discord.com", new_tab = true },
     { lang = "zh", name = "discord", url = "https://discord.com", new_tab = true },
 
-    { lang = "en", name = "> 简体中文", path = "/zh" },
-    { lang = "zh", name = "> English", path = "/" },
+    { lang = "en", name = "*简体中文", path = "/zh" },
+    { lang = "zh", name = "*English", path = "/" },
 ]
 # footer navigation does not support multiple languages, some global infomation putted here might be better
 footer_nav = [

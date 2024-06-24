@@ -99,6 +99,8 @@
     <body theme="auto">
         <div class="w">
             <header>
+                {% block header %}
+                {% if title %}<h1 style="text-align: center;">{{ config.title }}</h1>{% endif %}
                 {% if config.extra.header_nav -%}
                 <nav>
                     {% for nav_item in config.extra.header_nav | filter(attribute="lang", value=lang)  -%}
@@ -111,7 +113,7 @@
                     {% endfor -%}
                 </nav>
                 {% endif -%}
-                {% block header %}{% if title %}<h1>{{ config.title }}</h1>{% endif %}{% endblock header %}
+                {% endblock header %}
             </header>
             <main class="page-content" aria-label="Content">
                 {% block content %}{% endblock content %}

@@ -1,7 +1,7 @@
 {% extends "base.html" -%}
 
 {% block header -%}
-<p><a href="{{ current_path }}..">..</a>{{ current_path }}</p>
+<a href="{{ current_path }}.." style="font-size: 32px;">⬑</a>
 {% set map = config.extra.taxonomies_map | filter(attribute="lang", value=lang) | filter(attribute="taxonomy", value=taxonomy.name) | first -%}
 {% if map -%}
 <h1>{{ map.name }}</h1>
