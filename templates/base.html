@@ -120,13 +120,6 @@
             </main>
             <footer>
                 {% block footer %}{% endblock footer %}
-                {% if config.extra.footer_nav -%}
-                <nav>
-                    {% for nav_item in config.extra.footer_nav -%}
-                    <a href="{{ nav_item.url | safe }}">{{ nav_item.name }}</a>
-                    {% endfor -%}
-                </nav>
-                {% endif -%}
             </footer>
         </div>
     </body>
