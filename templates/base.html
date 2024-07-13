@@ -46,6 +46,12 @@
         {% set url = config.base_url -%}
         {% endif -%}
 
+        {% if section.generate_feed -%}
+        {% set generate_feed = section.generate_feed %}
+        {% elif config.generate_feed -%}
+        {% set generate_feed = config.generate_feed -%}
+        {% endif -%}
+
         {% if title %}<title>{{ title }}</title>{% endif %}
         {% block meta -%}
         {% if title %}<meta name="title" content="{{ title }}">{% endif %}
@@ -86,9 +92,9 @@
             }
         </script>
         {% endblock meta -%}
-        {% if config.generate_feed -%}
+        {% if generate_feed -%}
         {% block feed -%}
-        <link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path='atom.xml', trailing_slash=false) }}">
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="./atom.xml">
         {% endblock feed -%}
         {% endif -%}
         {% block css -%}
