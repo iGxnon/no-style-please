@@ -3,12 +3,13 @@
   filter: invert(1);
   img {
     filter: invert(1);
-
     &.invertable { filter: invert(0); }
+  }
+  canvas {
+    filter: invert(1);
   }
   iframe {
     filter: invert(1);
-
     &.invertable { filter: invert(0); }
   }
   .abcjs-cursor, abcjs-highlight {
@@ -19,18 +20,19 @@
   }
 }
 
-body[theme="dark"] { @include dark-appearance; }
-
+// use html here to avoid bugs with fixed position
+// https://stackoverflow.com/questions/51589185/css-filter-invert-rule-breaking-fixed-position-on-chrome-68
+html[theme="dark"] { @include dark-appearance; }
 
 @media (prefers-color-scheme: dark) {
-  body[theme="auto"] { @include dark-appearance; }
+  html[theme="auto"] { @include dark-appearance; }
 }
 // -------------------------------------------- //
 
 // bg color is also needed in html in order to
 // block body's background propagation
 // see: https://stackoverflow.com/a/61265706
-html, body { background: white; }
+html { background: white; }
 
 html { height: 100%; }
 
@@ -61,6 +63,11 @@ li { margin: 0.4rem 0; }
   max-width: 640px;
   margin: 0 auto;
   padding: 4rem 2rem;
+}
+
+#playground {
+  position: fixed;
+  z-index: -1;
 }
 
 hr {
