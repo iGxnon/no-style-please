@@ -15,6 +15,7 @@ class Frame {
     constructor() {
         this.animateType = 0;
         this.animateFrame = 0;
+        this.ticks = 0;
     }
 
     dy() {
@@ -28,6 +29,7 @@ class Frame {
     change(type) {
         this.animateType = type;
         this.animateFrame = 0;
+        this.ticks = 0;
     }
 
     tick() {
@@ -36,25 +38,22 @@ class Frame {
             case 1: // 向右
             case 2: // 向上
             case 3: // 向左
-            case 5: // 舔手
-                this.animateFrame = (this.animateFrame + 1) % 4;
+                this.animateFrame = [0, 1, 2, 3][this.ticks % 4];
                 break;
-            case 4: // 坐下来睡觉
+            case 4: // 坐下来
+                this.animateFrame = [0, 1, 2, 2, 2, 2, 3, 3, 3, 3][this.ticks < 10 ? this.ticks : (this.ticks - 10) % 8 + 2];
+                break;
+            case 5: // 舔手
+                this.animateFrame = [0, 0, 1, 1, 2, 2, 3, 3][this.ticks % 8];
+                break;
             case 6: // 趴着睡觉
-                if (this.animateFrame == 3) {
-                    this.animateFrame = 3;
-                } else {
-                    this.animateFrame += 1;
-                }
+                this.animateFrame = [0, 1, 2, 3][this.ticks < 4 ? this.ticks : 3];
                 break;
             case 7: // 裹起来睡觉
-                if (this.animateFrame == 0) {
-                    this.animateFrame = 1;
-                } else {
-                    this.animateFrame = 0;
-                }
+                this.animateFrame = [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1][this.ticks % 12];
                 break;
         }
+        this.ticks++;
     }
 }
 
@@ -109,15 +108,7 @@ class Action {
                     this.x = canvas.width - 20;
                 }
                 break;
-            case 4: // 坐下来
-                break;
-            case 5: // 舔手
-                break;
-            case 6: // 趴着睡觉
-                break;
-            case 7: // 裹起来睡觉
-                break;
-            case 8: // 蓄力跳
+            default:
                 break;
         }
     }
