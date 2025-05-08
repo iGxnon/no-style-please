@@ -7,11 +7,6 @@ demo = "https://no-style-please.netlify.com"
 
 [extra]
 
-# The theme author info: you!
-[author]
-name = "iGxnon"
-homepage = "https://blog.skygard.work"
-
 [original]
 name = "Ahmed Alaa"
 homepage = "https://4b.cx"
