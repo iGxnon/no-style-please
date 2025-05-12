@@ -5,8 +5,6 @@ homepage = "https://github.com/iGxnon/no-style-please"
 min_version = "0.4.0"
 demo = "https://no-style-please.netlify.com"
 
-[extra]
-
 [original]
 name = "Ahmed Alaa"
 homepage = "https://4b.cx"
