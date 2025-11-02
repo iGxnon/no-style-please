@@ -5,7 +5,6 @@
         <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
         <meta content="text/html; charset=UTF-8" http-equiv="content-type"/>
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
-
         {% if page.title -%}
         {% set title = page.title -%}
         {% elif section.title -%}
@@ -13,7 +12,6 @@
         {% elif config.title -%}
         {% set title = config.title -%}
         {% endif -%}
-
         {% if page.extra.author -%}
         {% set author = page.extra.author -%}
         {% elif section.extra.author -%}
@@ -21,7 +19,6 @@
         {% elif config.extra.author -%}
         {% set author = config.extra.author -%}
         {% endif -%}
-
         {% if page.description -%}
         {% set description = page.description | truncate(length=150) -%}
         {% elif section.description -%}
@@ -29,7 +26,6 @@
         {% elif config.description -%}
         {% set description = config.description | truncate(length=150) -%}
         {% endif -%}
-
         {% if page.extra.image -%}
         {% set image = get_url(path=page.extra.image, trailing_slash=false) -%}
         {% elif section.extra.image -%}
@@ -37,7 +33,6 @@
         {% elif config.extra.logo -%}
         {% set image = get_url(path=config.extra.logo, trailing_slash=false) -%}
         {% endif -%}
-
         {% if page.permalink -%}
         {% set url = page.permalink -%}
         {% elif section.permalink -%}
@@ -45,27 +40,23 @@
         {% elif config.base_url -%}
         {% set url = config.base_url -%}
         {% endif -%}
-
         {% if section.generate_feed -%}
         {% set generate_feed = section.generate_feed %}
         {% elif config.generate_feed -%}
         {% set generate_feed = config.generate_feed -%}
         {% endif -%}
-
         {% if title %}<title>{{ title }}</title>{% endif %}
         {% block meta -%}
         {% if title %}<meta name="title" content="{{ title }}">{% endif %}
         {% if author %}<meta name="author" content="{{ author }}">{% endif %}
         {% if description %}<meta name="description" content="{{ description }}">{% endif %}
-        <meta name="generator" content="Zola v0.16.1">
-
+        <meta name="generator" content="Zola">
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ url | safe }}">
         {% if title %}<meta property="og:site_name" content="{{ config.title }}">{% endif %}
         {% if title %}<meta property="og:title" content="{{ title }}">{% endif %}
         {% if description %}<meta property="og:description" content="{{ description }}">{% endif %}
         {% if image %}<meta property="og:image" content="{{ image }}">{% endif %}
-        
         {% set twitter_card = config.extra.twitter_card | default(value=true) -%}
         {% if twitter_card != false -%}
         <meta property="twitter:card" content="summary_large_image">
@@ -74,7 +65,6 @@
         {% if description %}<meta property="twitter:description" content="{{ description }}">{% endif %}
         {% if image %}<meta property="twitter:image" content="{{ image }}">{% endif %}
         {% endif -%}
-        
         <link rel="canonical" href="{{ url | safe }}">
         {% if image %}<link rel="shortcut icon" type="image/x-icon" href="{{ image }}">{% endif %}
         <script type="application/ld+json">

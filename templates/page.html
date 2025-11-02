@@ -38,6 +38,10 @@
     }
 </style>
 {% endif -%}
+{% if page.extra.aplayer and page.extra.aplayer == true -%}
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+{% endif -%}
 {% endblock head -%}
 
 {% block header -%}

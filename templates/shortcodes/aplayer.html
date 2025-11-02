@@ -1,0 +1,14 @@
+{% set id = get_random(end=114514) -%}
+<div id="{{ 'aplayer-' ~  id }}" {% if class %}class={{ class }}{% endif %}></div>
+<script defer>
+const {{ 'ap' ~ id }} = new APlayer({
+    container: document.getElementById("{{ 'aplayer-' ~  id }}"),
+    audio: {
+        name: "{{ name }}",
+        artist: "{{ artist }}",
+        url: "{{ url }}",
+{% if cover %}        cover: "{{ cover | safe }}",{% endif %}
+{% if lrc %}        lrc: "{{ lrc | safe }}",{% endif %}
+    }
+});
+</script>
