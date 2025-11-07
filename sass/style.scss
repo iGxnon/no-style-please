@@ -12,7 +12,7 @@
     filter: invert(1);
     &.invertable { filter: invert(0); }
   }
-  .abcjs-cursor, abcjs-highlight {
+  .abcjs-cursor, .abcjs-highlight, .abcjs-note_selected {
     filter: invert(1);
   }
   .emoji {
@@ -95,6 +95,7 @@ table, th, td {
 code {
   color: white;
   background: black;
+  font-family: ui-monospace, 'Fira Code', monospace;
 }
 
 pre code {
