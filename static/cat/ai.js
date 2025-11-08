@@ -50,8 +50,10 @@ class Frame {
                 this.animateFrame = [0, 1, 2, 3][this.ticks < 4 ? this.ticks : 3];
                 break;
             case 7: // 裹起来睡觉
-                this.animateFrame = [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1][this.ticks % 12];
+                this.animateFrame = [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3][this.ticks % 12];
                 break;
+            case 8: // 向右摇尾巴（攻击姿态！）
+                this.animateFrame = [0, 0, 0, 1, 2, 3][this.ticks % 6];
         }
         this.ticks++;
     }
@@ -72,7 +74,7 @@ class Action {
     }
 
     nextAction() {
-        this.action = Math.floor(Math.random() * 8);
+        this.action = Math.floor(Math.random() * 9);
         this.frame.change(this.action);
         this.actionFrames = Math.floor(Math.random() * 32) + 32;
     }
