@@ -54,6 +54,7 @@ class Frame {
                 break;
             case 8: // 向右摇尾巴（攻击姿态！）
                 this.animateFrame = [0, 0, 0, 1, 2, 3][this.ticks % 6];
+                break;
         }
         this.ticks++;
     }
